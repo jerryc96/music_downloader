@@ -12,13 +12,13 @@ ssh_client = paramiko.SSHClient()
 ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 def download(remotepath, localpath, client):
-    client.connect(HOSTNAME, USERNAME, PASSWORD)
+    client.connect(HOSTNAME, username=USERNAME, password=PASSWORD)
     ftp_client = client.open_sftp()
     ftp_client.get(remotepath, localpath)
     ftp_client.close()
 
 def upload(localpath, remotepath, client):
-    client.connect(HOSTNAME, USERNAME, PASSWORD)
+    client.connect(HOSTNAME, username=USERNAME, password=PASSWORD)
     ftp_client = client.open_sftp()
     ftp_client.put(localpath, remotepath)
     ftp_client.close()
